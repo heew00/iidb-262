@@ -1,0 +1,288 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: oklch(100% 0.00011 271.152);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .poster {
+    background-color: oklch(81.951% 0.1241 223.785);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .top-shape {
+    background-color: oklch(20.375% 0.10879 270.176);
+    display: grid;
+    width: 350px;
+    height: 450px;
+    grid-area: 1 / 1;
+  }
+
+  .month {
+    margin-right: 10px;
+    grid-area: 1 / 4;
+    justify-self: end;
+    align-self: start;
+    font-size: 60px;
+    font-weight: bold;
+    color: oklch(20.375% 0.10879 270.176);
+  }
+
+  .info-title {
+    margin: 10px;
+    grid-area: 2 / 1;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .place {
+    grid-area: 2 / 1;
+    margin-top: 40px;
+    margin-left: 10px;
+  }
+
+  .schedule-row {
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: right;
+    margin: 10px;
+    .date {
+      color: lightgoldenrodyellow;
+      font-weight: lighter;
+      text-align: left;
+      margin-left: 20px;
+    }
+  }
+
+  .schedule {
+    grid-row: 2;
+    align-self: end;
+    margin-bottom: 10px;
+    .s {
+      color: lightgoldenrodyellow;
+      margin-top: 40px;
+      justify-self: center;
+      font-size: 15px;
+      font-weight: bold;
+    }
+  }
+
+  .square {
+    height: 200px;
+    width: 100%;
+    background-color: oklch(20.375% 0.10879 270.176);
+    grid-area: 3 / 1;
+  }
+  .main {
+    grid-row: 6;
+    .main-title {
+      color: oklch(81.951% 0.1241 223.785);
+      font-size: 80px;
+    }
+  }
+
+  .square1 {
+    background-color: oklch(20.375% 0.10879 270.176);
+    width: 1000%;
+    height: 70px;
+    grid-area: 6/4;
+    .url {
+      color: lightgoldenrodyellow;
+      margin: 10px;
+      font-size: 20px;
+    }
+  }
+
+  .square2 {
+    background-color: oklch(20.375% 0.10879 270.176);
+    width: 100%;
+    height: 70px;
+    grid-area: 6 /1;
+    .number {
+      color: lightgoldenrodyellow;
+      font-size: 20px;
+      margin: 10px;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .poster {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    width: min(100%, 900px);
+    aspect-ratio: 471 / 623;
+    overflow: hidden;
+    background-color: oklch(81.951% 0.1241 223.785);
+  }
+
+  /* 남색 사선 배경 */
+  .poster::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: oklch(20.375% 0.10879 270.176);
+    clip-path: polygon(
+      0 0,
+      43% 0,
+      81% 38%,
+      100% 33%,
+      100% 84%,
+      71% 100%,
+      0 100%
+    );
+    z-index: 0;
+  }
+
+  .poster > * {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+  }
+
+  /* 일정 영역 */
+  .top-shape {
+    grid-area: 2 / 2 / 9 / 9;
+    display: grid;
+    background: transparent;
+  }
+
+  .schedule {
+    align-self: center;
+    justify-self: center;
+    width: 370px;
+    transform: rotate(-38deg);
+  }
+
+  .schedule-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 15px;
+    margin: 7px 0;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  .schedule-row .date {
+    color: lightgoldenrodyellow;
+    font-weight: normal;
+  }
+
+  .schedule .s {
+    margin-top: 20px;
+    color: lightgoldenrodyellow;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  /* 월 표시 */
+  .month {
+    grid-area: 3 / 10 / 9 / 13;
+    justify-self: center;
+    align-self: center;
+    color: oklch(20.375% 0.10879 270.176);
+    font-size: clamp(60px, 12vw, 100px);
+    font-weight: bold;
+    transform: rotate(-38deg);
+  }
+
+  /* 행사 정보 */
+  .info-title {
+    grid-area: 2 / 7 / 4 / 13;
+    align-self: center;
+    justify-self: center;
+    font-size: 15px;
+    font-weight: bold;
+    transform: rotate(55deg);
+  }
+
+  .place {
+    grid-area: 3 / 7 / 5 / 13;
+    align-self: center;
+    justify-self: center;
+    font-size: 10px;
+    transform: rotate(55deg);
+  }
+
+  /* 제목 영역 */
+  .square {
+    grid-area: 10 / 1 / 15 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    background: transparent;
+  }
+
+  .main {
+    grid-area: 1 / 1 / 5 / 13;
+    display: grid;
+    align-items: center;
+  }
+
+  .main h1 {
+    margin: 0;
+    color: oklch(81.951% 0.1241 223.785);
+    font-size: 20vw;
+    line-height: 0.78;
+    letter-spacing: -7px;
+    white-space: nowrap;
+  }
+
+  .main-title {
+    display: block;
+  }
+
+  /* 웹사이트 주소 */
+  .square1 {
+    grid-area: 11 / 9 / 13 / 13;
+    background-color: oklch(20.375% 0.10879 270.176);
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    justify-self: center;
+    transform: rotate(-35deg);
+  }
+
+  .url {
+    color: lightgoldenrodyellow;
+    font-size: 20px;
+  }
+
+  /* 전화번호 */
+  .square2 {
+    background-color: oklch(20.375% 0.10879 270.176);
+    width: 60%;
+    height: 130%;
+    grid-area: 14 / 2 / 16 / 6;
+    align-self: center;
+    justify-self: center;
+    transform: rotate(-35deg);
+  }
+
+  .number {
+    color: lightgoldenrodyellow;
+    font-size: 20px;
+  }
+}
